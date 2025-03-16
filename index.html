@@ -1,1 +1,151 @@
-Hello World
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>r/Paraguay - Comunidad Gaming</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0038A8; /* Azul bandera Paraguay */
+            --secondary-color: #D52B1E; /* Rojo bandera Paraguay */
+            --background-dark: #1a1a1a;
+            --text-light: #ffffff;
+        }
+
+        body {
+            background: var(--background-dark);
+            color: var(--text-light);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6') center/cover;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .server-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px;
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--primary-color);
+        }
+
+        .server-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .discord-btn {
+            background: #5865F2;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        .discord-btn:hover {
+            background: #4752C4;
+            box-shadow: 0 5px 15px rgba(88,101,242,0.4);
+        }
+
+        .minecraft-ip {
+            background: var(--secondary-color);
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .copy-notification {
+            position: absolute;
+            background: rgba(0,0,0,0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            display: none;
+            right: -70px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .theme-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="theme-switch">
+    <i class="fas fa-moon fa-2x"></i>
+</div>
+
+<section class="hero-section">
+    <div class="container">
+        <img src="https://i.imgur.com/8Q7Yy9p.png" alt="Logo r/Paraguay" style="height: 150px; margin-bottom: 30px;">
+        <h1 class="display-4 mb-4">Bienvenido a r/Paraguay</h1>
+        <p class="lead mb-5">Comunidad de gamers paraguayos - ¡Únete a la aventura!</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="server-card">
+                    <i class="fab fa-discord fa-3x mb-3"></i>
+                    <h3>Discord</h3>
+                    <p class="text-muted">Más de 1,000 miembros activos</p>
+                    <a href="TU_ENLACE_DISCORD_AQUI" class="discord-btn">
+                        <i class="fab fa-discord"></i> Unirse al Servidor
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-md-5">
+                <div class="server-card">
+                    <i class="fas fa-cube fa-3x mb-3"></i>
+                    <h3>Minecraft</h3>
+                    <p class="text-muted">Survival 1.20.1 - Sin P2W</p>
+                    <div class="minecraft-ip" onclick="copyIP()">
+                        mc.rparaguay.com
+                        <span class="copy-notification" id="copyNotification">¡Copiado!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Función para copiar IP
+    function copyIP() {
+        navigator.clipboard.writeText("mc.rparaguay.com");
+        const notification = document.getElementById('copyNotification');
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 2000);
+    }
+
+    // Switch tema claro/oscuro
+    document.querySelector('.theme-switch').addEventListener('click', function() {
+        document.body.classList.toggle('light-theme');
+        this.querySelector('i').classList.toggle('fa-moon');
+        this.querySelector('i').classList.toggle('fa-sun');
+    });
+
+    // Añadir clase para tema claro
+    document.body.classList.add('light-theme');
+</script>
+
+</body>
+</html>
